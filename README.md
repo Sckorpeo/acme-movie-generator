@@ -18,3 +18,4 @@
 ## Other Notes
 - I am using a third party API to pull actual random movie names. Source of the api can be found <a href='https://github.com/k2maan/moviehut-random-movie-api'>Here</a>
 - I could have used redux to store my state, but I wanted to get more of a feel for where my state and props should be if I didn't use a store.
+- I chose to disable increment buttons when at the bottom or top value instead  of sending an alert because I believe it is a better user experience.
