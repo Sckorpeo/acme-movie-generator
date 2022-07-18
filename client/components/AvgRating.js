@@ -10,7 +10,7 @@ const AvgRating = ({ movies }) => {
         const newRating = movies?.reduce((accm, next) => {
             return accm + next.rating
         }, 0);
-        setAvgRating(newRating / movies.length);
+        setAvgRating(Math.floor(newRating / movies.length));
     }, [movies]);
 
     return (

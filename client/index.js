@@ -10,6 +10,12 @@ import MovieList from './components/MovieList';
 const App = () => {
     const [movies, setMovies] = useState([]);
 
+    const handleMovieUpdate = async (movie, propToUpdate) => {
+        const updatedMovie = (await axios.put(`/api/movies/${movie.id}`, { ...movie, ...propToUpdate })).data;
+        const newMoviesList = movies.map(m => m.id !== movie.id ? m : updatedMovie);
+        setMovies(newMoviesList);
+    }
+
     useEffect(() => {
         console.log('In App UseEffect');
         async function fetchMovies() {
@@ -23,7 +29,7 @@ const App = () => {
         <main>
             <AvgRating movies={movies} />
             <Btn text={'Generate Random Movie'} handleClick={() => console.log('Btn pressed')} />
-            <MovieList movies={movies} />
+            <MovieList movies={movies} handleMovieUpdate={handleMovieUpdate} />
         </main>
     )
 }

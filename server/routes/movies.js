@@ -15,7 +15,8 @@ router.get('/', async (req, res, next) => {
 router.put('/:id', async (req, res, next) => {
     try {
         const movie = await Movie.findByPk(req.params.id);
-        movie.update(req.body);
+        await movie.update(req.body);
+        res.send(movie);
     }
     catch (ex) {
         next(ex);
