@@ -5,6 +5,7 @@ import axios from 'axios';
 //Components
 import AvgRating from './components/AvgRating';
 import Btn from './components/Btn';
+import MovieList from './components/MovieList';
 
 const App = () => {
     const [movies, setMovies] = useState([]);
@@ -22,6 +23,7 @@ const App = () => {
         <main>
             <AvgRating movies={movies} />
             <Btn text={'Generate Random Movie'} handleClick={() => console.log('Btn pressed')} />
+            <MovieList movies={movies} />
         </main>
     )
 }

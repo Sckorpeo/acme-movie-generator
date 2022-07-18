@@ -12,4 +12,14 @@ router.get('/', async (req, res, next) => {
     }
 });
 
+router.put('/:id', async (req, res, next) => {
+    try {
+        const movie = await Movie.findByPk(req.params.id);
+        movie.update(req.body);
+    }
+    catch (ex) {
+        next(ex);
+    }
+})
+
 module.exports = router;

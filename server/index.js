@@ -6,6 +6,7 @@ const movieRoutes = require('./routes/movies');
 
 app.use(express.static(path.join(__dirname, '..', 'build')));
 app.use('/public', express.static('public'));
+app.use(express.json());
 
 app.use('/api/movies', movieRoutes);
 
