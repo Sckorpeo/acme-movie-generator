@@ -4,11 +4,13 @@ import React, { useEffect, useState } from "react";
 const AvgRating = ({ movies }) => {
 
     const [averageRating, setAvgRating] = useState(0);
+
     useEffect(() => {
-        const newRating = movies?.reduce((prev, next) => {
-            return (prev + next.rating) / 2
-        }, averageRating);
-        setAvgRating(newRating);
+        console.log('In AvgRating UseEffect');
+        const newRating = movies?.reduce((accm, next) => {
+            return accm + next.rating
+        }, 0);
+        setAvgRating(newRating / movies.length);
     }, [movies]);
 
     return (
