@@ -14,7 +14,9 @@ const AvgRating = ({ movies }) => {
             setAvgRating(Math.floor(newRating / movies.length));
         }
     }, [movies]);
-
+    if (movies.length <= 0) {
+        return (null)
+    }
     return (
         <div className="content-box">
             <div> The average rating is {averageRating}</div>

@@ -21,7 +21,7 @@ router.delete('/:id', async (req, res, next) => {
     catch (ex) {
         next(ex);
     }
-})
+});
 
 router.put('/:id', async (req, res, next) => {
     try {
@@ -32,6 +32,16 @@ router.put('/:id', async (req, res, next) => {
     catch (ex) {
         next(ex);
     }
-})
+});
+
+router.post('/', async (req, res, next) => {
+    try {
+        const movie = await Movie.create({ name: req.body.name });
+        res.send(movie);
+    }
+    catch (ex) {
+        next(ex);
+    }
+});
 
 module.exports = router;

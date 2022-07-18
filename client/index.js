@@ -22,6 +22,13 @@ const App = () => {
         setMovies(newMoviesList);
     }
 
+    const generateNewMovie = async () => {
+        const { name } = (await axios.get('https://k2maan-moviehut.herokuapp.com/api/random')).data;
+        console.log(name);
+        const newMovie = (await axios.post('/api/movies', { name })).data;
+        setMovies([...movies, newMovie]);
+    }
+
     useEffect(() => {
         console.log('In App UseEffect');
         async function fetchMovies() {
@@ -37,7 +44,7 @@ const App = () => {
                 movies={movies} />
             <Btn
                 text={'Generate Random Movie'}
-                handleClick={() => console.log('Btn pressed')} />
+                handleClick={generateNewMovie} />
             <MovieList
                 movies={movies}
                 handleMovieUpdate={handleMovieUpdate}
