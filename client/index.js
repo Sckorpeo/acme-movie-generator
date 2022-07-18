@@ -16,6 +16,12 @@ const App = () => {
         setMovies(newMoviesList);
     }
 
+    const handleMovieDelete = async (movie) => {
+        await axios.delete(`/api/movies/${movie.id}`);
+        const newMoviesList = movies.filter(m => m.id !== movie.id);
+        setMovies(newMoviesList);
+    }
+
     useEffect(() => {
         console.log('In App UseEffect');
         async function fetchMovies() {
@@ -27,9 +33,15 @@ const App = () => {
 
     return (
         <main>
-            <AvgRating movies={movies} />
-            <Btn text={'Generate Random Movie'} handleClick={() => console.log('Btn pressed')} />
-            <MovieList movies={movies} handleMovieUpdate={handleMovieUpdate} />
+            <AvgRating
+                movies={movies} />
+            <Btn
+                text={'Generate Random Movie'}
+                handleClick={() => console.log('Btn pressed')} />
+            <MovieList
+                movies={movies}
+                handleMovieUpdate={handleMovieUpdate}
+                handleMovieDelete={handleMovieDelete} />
         </main>
     )
 }
