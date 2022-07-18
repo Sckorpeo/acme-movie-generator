@@ -35,8 +35,6 @@ li>div {
     justify-content: space-around;
 }
 
-li>div>* {}
-
 hr {
     color: red;
 }

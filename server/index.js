@@ -2,9 +2,12 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const { syncAndSeed } = require('./db/syncAndSeed');
+const movieRoutes = require('./routes/movies');
 
 app.use(express.static(path.join(__dirname, '..', 'build')));
 app.use('/public', express.static('public'));
+
+app.use('/api/movies', movieRoutes);
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '..', 'client', 'index.html')));
 
